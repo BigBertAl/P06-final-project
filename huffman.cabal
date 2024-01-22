@@ -1,0 +1,93 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           huffman
+version:        0.1
+synopsis:       huffman
+license:        BSD3
+build-type:     Simple
+
+flag test-mode
+  description: By default, do not run instructor tests
+  manual: True
+  default: False
+
+library
+  exposed-modules:
+      Huffman
+      Auxiliaries
+  other-modules:
+      Paths_huffman
+  hs-source-dirs:
+      src
+  default-extensions:
+      ScopedTypeVariables
+  ghc-options: -Werror -W -fwarn-unused-imports -fwarn-unused-binds -fwarn-orphans -fwarn-unused-matches -fwarn-unused-do-bind -fwarn-wrong-do-bind -fwarn-missing-signatures -fno-warn-partial-type-signatures -Wredundant-constraints -rtsopts
+  build-depends:
+      base
+    , binary
+    , bytestring
+    , containers
+    , filepath
+  default-language: Haskell2010
+  if flag(test-mode)
+    build-depends:
+        bytestring
+      , directory
+      , filepath
+      , haskell-src-meta
+      , main-tester
+      , template-haskell
+  else
+
+executable huffman-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_huffman
+  hs-source-dirs:
+      exe
+  default-extensions:
+      ScopedTypeVariables
+  ghc-options: -Werror -W -fwarn-unused-imports -fwarn-unused-binds -fwarn-orphans -fwarn-unused-matches -fwarn-unused-do-bind -fwarn-wrong-do-bind -fwarn-missing-signatures -fno-warn-partial-type-signatures -Wredundant-constraints -rtsopts
+  build-depends:
+      base
+    , huffman
+  default-language: Haskell2010
+  if flag(test-mode)
+    build-depends:
+        bytestring
+      , directory
+      , filepath
+      , haskell-src-meta
+      , main-tester
+      , template-haskell
+  else
+
+test-suite unit-tests
+  type: exitcode-stdio-1.0
+  main-is: Tests.hs
+  other-modules:
+      Paths_huffman
+  hs-source-dirs:
+      test
+  default-extensions:
+      ScopedTypeVariables
+  ghc-options: -Werror -W -fwarn-unused-imports -fwarn-unused-binds -fwarn-orphans -fwarn-unused-matches -fwarn-unused-do-bind -fwarn-wrong-do-bind -fwarn-missing-signatures -fno-warn-partial-type-signatures -Wredundant-constraints -rtsopts
+  build-depends:
+      HUnit
+    , base
+    , containers
+    , huffman
+  default-language: Haskell2010
+  if flag(test-mode)
+    build-depends:
+        bytestring
+      , directory
+      , filepath
+      , haskell-src-meta
+      , main-tester
+      , template-haskell
+  else
